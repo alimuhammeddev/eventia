@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Navbar } from "./components/navbar";
 import { useState, useEffect } from "react";
 import { Calendar, MapPin } from "lucide-react";
+import { Footer } from "./components/footer";
 
 export default function Home() {
   const images = [
@@ -263,6 +264,10 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </div>
+      
+      <div>
+        <Footer />
       </div>
     </section>
   );
