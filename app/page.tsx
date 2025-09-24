@@ -212,13 +212,13 @@ export default function Home() {
             />
             <div className="p-4">
               <h1 className="lg:text-xl text-lg font-semibold text-gray-800">
-                Milly and Albert Exclusive Wedding
+                Ed Sheeran Love Show
               </h1>
               <p className="text-gray-600 mt-2 flex items-center gap-1">
-                <Calendar className="w-4 h-4" /> 01 August 2025
+                <Calendar className="w-4 h-4" /> 03 June 2025
               </p>
               <p className="text-gray-600 flex items-center gap-1">
-                <MapPin className="w-4 h-4" /> Grand Royal Palace, New York
+                <MapPin className="w-4 h-4" /> Times Square Arena, NY
               </p>
             </div>
           </div>
@@ -232,13 +232,13 @@ export default function Home() {
             />
             <div className="p-4">
               <h1 className="lg:text-xl text-lg font-semibold text-gray-800">
-                Milly and Albert Exclusive Wedding
+                Davido Timeless Tour
               </h1>
               <p className="text-gray-600 mt-2 flex items-center gap-1">
-                <Calendar className="w-4 h-4" /> 01 August 2025
+                <Calendar className="w-4 h-4" /> 06 July 2025
               </p>
               <p className="text-gray-600 flex items-center gap-1">
-                <MapPin className="w-4 h-4" /> Grand Royal Palace, New York
+                <MapPin className="w-4 h-4" /> Citizen Arena, Los Angeles
               </p>
             </div>
           </div>
@@ -252,13 +252,13 @@ export default function Home() {
             />
             <div className="p-4">
               <h1 className="lg:text-xl text-lg font-semibold text-gray-800">
-                Milly and Albert Exclusive Wedding
+                Small Business Founders Meetup
               </h1>
               <p className="text-gray-600 mt-2 flex items-center gap-1">
-                <Calendar className="w-4 h-4" /> 01 August 2025
+                <Calendar className="w-4 h-4" /> 08 August 2025
               </p>
               <p className="text-gray-600 flex items-center gap-1">
-                <MapPin className="w-4 h-4" /> Grand Royal Palace, New York
+                <MapPin className="w-4 h-4" /> Downtown Conference Hall, NY
               </p>
             </div>
           </div>
