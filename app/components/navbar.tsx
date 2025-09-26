@@ -1,5 +1,6 @@
 "use client";
 
+import { SignInButton, SignUpButton } from "@clerk/nextjs";
 import { CalendarPlus, LogIn } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -15,6 +16,7 @@ export const Navbar = () => {
             <Image src="/logo.png" alt="brand-logo" width={150} height={150} />
           </div>
 
+          {/* Desktop Nav Links */}
           <div className="hidden md:flex flex-1 justify-center items-center space-x-6">
             <a href="#" className="text-gray-700 hover:text-[#17364A]">
               Home
@@ -27,29 +29,37 @@ export const Navbar = () => {
             </a>
           </div>
 
+          {/* Desktop Auth Buttons */}
           <div className="hidden md:flex items-center">
-            <button className="flex items-center text-gray-700 hover:text-[#17364A] mr-7 cursor-pointer">
-              <LogIn className="w-4 h-4 mr-2" />
-              Sign In
-            </button>
-            <button className="flex items-center border border-[#17364A] text-[#17364A] px-4 py-2 rounded-full cursor-pointer hover:bg-[#17364A] hover:text-white transition">
-              <CalendarPlus className="w-4 h-4 mr-2" />
-              Create Event
-            </button>
+            <SignInButton mode="modal" forceRedirectUrl="/dashboard">
+              <button className="flex items-center text-gray-700 hover:text-[#17364A] mr-7 cursor-pointer">
+                <LogIn className="w-4 h-4 mr-2" />
+                Sign In
+              </button>
+            </SignInButton>
+
+            <SignUpButton mode="modal" forceRedirectUrl="/dashboard">
+              <button className="flex items-center border border-[#17364A] text-[#17364A] px-4 py-2 rounded-full cursor-pointer hover:bg-[#17364A] hover:text-white transition">
+                <CalendarPlus className="w-4 h-4 mr-2" />
+                Create Event
+              </button>
+            </SignUpButton>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
+              type="button"
               className="text-gray-700 focus:outline-none"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
             >
-              {/* Hamburger Icon */}
               <svg
                 className="w-6 h-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 {isOpen ? (
                   <path
@@ -84,14 +94,20 @@ export const Navbar = () => {
           <a href="#" className="block text-gray-700 hover:text-[#17364A]">
             FAQ
           </a>
-          <button className="flex items-center text-gray-700 hover:text-[#17364A] mr-7 cursor-pointer">
-            <LogIn className="w-4 h-4 mr-2" />
-            Sign In
-          </button>
-          <button className="w-full justify-center flex items-center border border-[#17364A] text-[#17364A] px-4 py-2 rounded-full cursor-pointer hover:bg-[#17364A] hover:text-white transition">
-            <CalendarPlus className="w-4 h-4 mr-2" />
-            Create Event
-          </button>
+
+          <SignInButton mode="modal" forceRedirectUrl="/dashboard">
+            <button className="flex items-center text-gray-700 hover:text-[#17364A] mr-7 cursor-pointer">
+              <LogIn className="w-4 h-4 mr-2" />
+              Sign In
+            </button>
+          </SignInButton>
+
+          <SignUpButton mode="modal" forceRedirectUrl="/dashboard">
+            <button className="w-full justify-center flex items-center border border-[#17364A] text-[#17364A] px-4 py-2 rounded-full cursor-pointer hover:bg-[#17364A] hover:text-white transition">
+              <CalendarPlus className="w-4 h-4 mr-2" />
+              Create Event
+            </button>
+          </SignUpButton>
         </div>
       )}
     </nav>

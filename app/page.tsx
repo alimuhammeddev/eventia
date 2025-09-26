@@ -55,7 +55,7 @@ export default function Home() {
               alt="event"
               width={450}
               height={450}
-              className="rounded-lg transition-all duration-700 ease-in-out"
+              className="rounded-lg transition-all duration-1000 ease-in-out"
             />
           </div>
         </div>
