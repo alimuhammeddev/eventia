@@ -4,6 +4,7 @@ import { Navbar } from "./components/navbar";
 import { useState, useEffect } from "react";
 import { Calendar, MapPin } from "lucide-react";
 import { Footer } from "./components/footer";
+import { SignUpButton } from "@clerk/nextjs";
 
 export default function Home() {
   const images = [
@@ -44,9 +45,11 @@ export default function Home() {
             <p className="lg:text-white">
               Book live events and discover concerts, events, theatre, and more
             </p>
-            <button className="lg:bg-white bg-[#17364A] lg:w-fit w-full lg:text-[#17364A] text-white px-6 py-3 rounded-full mt-5 font-medium lg:hover:bg-gray-200 transition">
-              Get Started
-            </button>
+            <SignUpButton mode="modal" forceRedirectUrl="/dashboard">
+              <button className="lg:bg-white bg-[#17364A] lg:w-fit w-full lg:text-[#17364A] text-white px-6 py-3 rounded-full mt-5 font-medium lg:hover:bg-gray-200 transition cursor-pointer">
+                Get Started
+              </button>
+            </SignUpButton>
           </div>
 
           <div>
@@ -82,9 +85,9 @@ export default function Home() {
                 <Calendar className="w-4 h-4" /> 01 December 2025
               </p>
               <p className="text-gray-600 flex items-center gap-1">
-                <MapPin className="w-4 h-4" /> Korea Show Arena, Korea 
+                <MapPin className="w-4 h-4" /> Korea Show Arena, Korea
               </p>
-              <button className="bg-[#17364A] text-white px-6 py-3 rounded-full mt-5 font-medium hover:bg-gray-800 transition w-full">
+              <button className="bg-[#17364A] text-white px-6 py-3 rounded-full mt-5 font-medium hover:bg-gray-800 transition w-full cursor-pointer">
                 Book Now
               </button>
             </div>
@@ -107,7 +110,7 @@ export default function Home() {
               <p className="text-gray-600 flex items-center gap-1">
                 <MapPin className="w-4 h-4" /> Primes Mart Coffee Shop, UK
               </p>
-              <button className="bg-[#17364A] text-white px-6 py-3 rounded-full mt-5 font-medium hover:bg-gray-800 transition w-full">
+              <button className="bg-[#17364A] text-white px-6 py-3 rounded-full mt-5 font-medium hover:bg-gray-800 transition w-full cursor-pointer">
                 Book Now
               </button>
             </div>
@@ -130,7 +133,7 @@ export default function Home() {
               <p className="text-gray-600 flex items-center gap-1">
                 <MapPin className="w-4 h-4" /> Grand Royal Palace, New York
               </p>
-              <button className="bg-[#17364A] text-white px-6 py-3 rounded-full mt-5 font-medium hover:bg-gray-800 transition w-full">
+              <button className="bg-[#17364A] text-white px-6 py-3 rounded-full mt-5 font-medium hover:bg-gray-800 transition w-full cursor-pointer">
                 Book Now
               </button>
             </div>
@@ -159,7 +162,7 @@ export default function Home() {
                 <Calendar className="w-4 h-4" /> 01 August 2025
               </p>
               <p className="text-gray-600 flex items-center gap-1">
-                <MapPin className="w-4 h-4" /> New Jersey Stadium Arena 
+                <MapPin className="w-4 h-4" /> New Jersey Stadium Arena
               </p>
             </div>
           </div>
@@ -265,7 +268,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      
+
       <div>
         <Footer />
       </div>

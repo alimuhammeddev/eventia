@@ -29,7 +29,6 @@ export const Navbar = () => {
             </a>
           </div>
 
-          {/* Desktop Auth Buttons */}
           <div className="hidden md:flex items-center">
             <SignInButton mode="modal" forceRedirectUrl="/dashboard">
               <button className="flex items-center text-gray-700 hover:text-[#17364A] mr-7 cursor-pointer">
