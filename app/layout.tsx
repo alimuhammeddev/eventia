@@ -1,35 +1,27 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const openSans = Open_Sans({
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: "Eventia",
   description: "Eventia - Your Ultimate Event Management Solution",
-  icons: {
-    icon: "/logo.png",
-  },
+  icons: { icon: "/logo.png" },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <body className={openSans.className}>
           {children}
         </body>
       </html>
