@@ -133,7 +133,7 @@ export default function DashboardPage() {
                   />
                 </div>
 
-                <button className="bg-white text-[#17364A] font-semibold px-4 py-2 rounded-lg hover:bg-gray-100 transition shadow">
+                <button className="bg-white text-[#17364A] font-semibold px-4 py-2 rounded-lg hover:bg-gray-100 transition shadow cursor-pointer">
                   Add
                 </button>
               </div>
