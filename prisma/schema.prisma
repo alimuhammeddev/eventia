@@ -1,0 +1,22 @@
+// This is your Prisma schema file.
+// It defines your database models and their relationships.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Event {
+  id         String   @id @default(cuid())
+  title      String
+  image      String?
+  location   String?
+  startDate  String
+  endDate    String
+  createdAt  DateTime @default(now())
+  isDeleted  Boolean  @default(false)
+}
