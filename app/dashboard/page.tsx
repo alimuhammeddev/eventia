@@ -135,7 +135,6 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          {/* Event List */}
           <div className="bg-white p-6 shadow-lg rounded-2xl">
             <h2 className="text-lg font-semibold mb-4 text-gray-800 flex items-center gap-2">
               <CalendarDays className="h-5 w-5 text-[#17364A]" /> Recent Event
