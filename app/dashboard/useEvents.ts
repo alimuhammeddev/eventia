@@ -12,7 +12,6 @@ export interface EventItem {
   createdAt?: string;
 }
 
-// ✅ Reusable fetcher function for SWR
 const fetcher = async (url: string) => {
   const res = await fetch(url);
   if (!res.ok) {
@@ -22,17 +21,15 @@ const fetcher = async (url: string) => {
 };
 
 export function useEvents() {
-  // ✅ SWR handles caching, revalidation, and refetching
   const { data: events = [], error, isLoading, mutate } = useSWR<EventItem[]>(
     "/api/events",
     fetcher,
     {
-      revalidateOnFocus: true, // auto-refresh when you return to the tab
-      refreshInterval: 5000, // re-fetch every 5s for live updates (optional)
+      revalidateOnFocus: true, 
+      refreshInterval: 5000, 
     }
   );
 
-  // ✅ Add Event (and revalidate SWR cache)
   const addEvent = async (formData: FormData) => {
     try {
       const res = await fetch("/api/events", {
@@ -41,24 +38,23 @@ export function useEvents() {
       });
 
       if (!res.ok) throw new Error(await res.text());
-      await mutate(); // 🔄 instantly refresh the events list
+      await mutate();
     } catch (error) {
       console.error("Error adding event:", error);
       throw error;
     }
   };
 
-  // ✅ Delete Event (and revalidate SWR cache) — FIXED to match your API
   const deleteEvent = async (id: string) => {
     try {
       const res = await fetch("/api/events", {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id }), // ✅ send id in JSON body
+        body: JSON.stringify({ id }), 
       });
 
       if (!res.ok) throw new Error("Failed to delete event");
-      await mutate(); // 🔄 instantly refresh after deletion
+      await mutate();
     } catch (error) {
       console.error("Error deleting event:", error);
       throw error;
@@ -68,7 +64,7 @@ export function useEvents() {
   return {
     events,
     addEvent,
-    deleteEvent, // ✅ now properly implemented
+    deleteEvent,
     loading: isLoading,
     error,
   };
