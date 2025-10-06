@@ -1,21 +1,19 @@
-// Prisma schema for PostgreSQL (production) + SQLite (optional local use)
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"         
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model Event {
-  id         String   @id @default(cuid())
-  title      String
-  image      String?
-  location   String?
-  startDate  String
-  endDate    String
-  createdAt  DateTime @default(now())
-  isDeleted  Boolean  @default(false)
+  id        String   @id @default(cuid())
+  title     String
+  image     String?
+  location  String?
+  startDate String
+  endDate   String
+  createdAt DateTime @default(now())
+  isDeleted Boolean  @default(false)
 }
