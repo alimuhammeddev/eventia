@@ -22,7 +22,6 @@ export async function GET() {
   }
 }
 
-// ✅ POST new event (with optional image upload)
 export async function POST(req: Request) {
   try {
     const formData = await req.formData();

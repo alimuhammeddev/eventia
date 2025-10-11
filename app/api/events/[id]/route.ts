@@ -1,14 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
-// Import your database client here, e.g., Prisma
-import { prisma } from "@/lib/prisma"; // adjust path
+import { prisma } from "@/lib/prisma";
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
-  const { id } = params;
+export async function DELETE(
+  req: NextRequest,
+  context: { params: Promise<{ id: string }> } 
+) {
+  const { id } = await context.params;
 
   try {
-    // Example using Prisma
     await prisma.event.delete({
-      where: { id: Number(id) }, // adjust if id is string
+      where: { id },
     });
 
     return NextResponse.json({ message: "Event deleted" }, { status: 200 });
