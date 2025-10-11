@@ -1,0 +1,35 @@
+/* ✅ Make the date picker icon white and clickable across the full width */
+.date-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* make it white */
+  opacity: 1;
+  cursor: pointer;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.date-input::-webkit-inner-spin-button,
+.date-input::-webkit-clear-button {
+  display: none;
+}
+
+.date-input::-moz-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* Make sure clicking anywhere in the input opens date picker */
+.date-input:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}

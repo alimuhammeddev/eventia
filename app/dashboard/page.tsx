@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { PlusCircle, CalendarDays } from "lucide-react";
+import { PlusCircle, CalendarDays, Loader2 } from "lucide-react";
 import DashboardLayout from "../components/DashboardLayout";
 import { useEvents } from "./useEvents";
-import { toast } from "sonner";
+import { Toaster, toast } from "sonner";
 import Image from "next/image";
+import "./dashboard.css";
 
 export default function DashboardPage() {
   const { events, addEvent, loading } = useEvents();
@@ -17,6 +18,8 @@ export default function DashboardPage() {
     endDate: "",
     image: null as File | null,
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value, files } = e.target;
@@ -36,6 +39,8 @@ export default function DashboardPage() {
       return;
     }
 
+    setIsSubmitting(true);
+
     const form = new FormData();
     form.append("title", formData.title);
     form.append("location", formData.location);
@@ -43,68 +48,126 @@ export default function DashboardPage() {
     form.append("endDate", formData.endDate);
     if (formData.image) form.append("image", formData.image);
 
-    toast.promise(addEvent(form), {
-      loading: "Creating event...",
-      success: "Event created successfully!",
-      error: "Failed to create event.",
-    });
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1200));
 
-    setFormData({
-      title: "",
-      location: "",
-      startDate: "",
-      endDate: "",
-      image: null,
-    });
+      await addEvent(form);
+
+      setFormData({
+        title: "",
+        location: "",
+        startDate: "",
+        endDate: "",
+        image: null,
+      });
+
+      toast.success("Event created successfully!", {
+        position: "bottom-right",
+        duration: 3000,
+      });
+    } catch (error) {
+      toast.error("Failed to create event.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  // ✅ Only show the latest event (if any)
   const latestEvent = events.length > 0 ? events[events.length - 1] : null;
 
   return (
     <DashboardLayout>
+      <Toaster richColors position="bottom-right" />
+
       <main className="flex-1 p-6 flex justify-center bg-gray-50 min-h-screen">
         <div className="w-full max-w-4xl space-y-6">
-          {/* Create Event Form */}
           <div className="bg-gradient-to-r from-[#17364A] to-[#1f4d63] text-white p-6 shadow-lg rounded-2xl">
             <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
               <PlusCircle className="h-5 w-5" /> Create Event
             </h2>
 
             <div className="grid grid-cols-1 gap-4">
-              <input
-                id="event-title"
-                type="text"
-                value={formData.title}
-                onChange={handleChange}
-                placeholder="Event Title"
-                className="border rounded-lg px-3 py-2 text-white placeholder:text-white bg-transparent focus:outline-none focus:ring-2 focus:ring-white/50"
-              />
-              <input
-                id="event-location"
-                type="text"
-                value={formData.location}
-                onChange={handleChange}
-                placeholder="Event Location"
-                className="border rounded-lg px-3 py-2 text-white placeholder:text-white bg-transparent focus:outline-none focus:ring-2 focus:ring-white/50"
-              />
-              <input
-                aria-label="Event Start Date"
-                id="event-startDate"
-                type="date"
-                value={formData.startDate}
-                onChange={handleChange}
-                className="border rounded-lg px-3 py-2 text-white bg-transparent focus:outline-none focus:ring-2 focus:ring-white/50"
-              />
-              <input
-                aria-label="Event End Date"
-                id="event-endDate"
-                type="date"
-                value={formData.endDate}
-                onChange={handleChange}
-                className="border rounded-lg px-3 py-2 text-white bg-transparent focus:outline-none focus:ring-2 focus:ring-white/50"
-              />
+              {/* Title */}
               <div>
+                <label
+                  htmlFor="event-title"
+                  className="block text-sm font-medium mb-1 text-white/90"
+                >
+                  Event Title
+                </label>
+                <input
+                  id="event-title"
+                  type="text"
+                  value={formData.title}
+                  onChange={handleChange}
+                  placeholder="Enter event title"
+                  className="border rounded-lg w-full px-3 py-2 text-white placeholder:text-white/70 bg-transparent focus:outline-none focus:ring-2 focus:ring-white/50"
+                />
+              </div>
+
+              {/* Location */}
+              <div>
+                <label
+                  htmlFor="event-location"
+                  className="block text-sm font-medium mb-1 text-white/90"
+                >
+                  Location
+                </label>
+                <input
+                  id="event-location"
+                  type="text"
+                  value={formData.location}
+                  onChange={handleChange}
+                  placeholder="Enter location"
+                  className="border rounded-lg w-full px-3 py-2 text-white placeholder:text-white/70 bg-transparent focus:outline-none focus:ring-2 focus:ring-white/50"
+                />
+              </div>
+
+              {/* Start Date */}
+              <div>
+                <label
+                  htmlFor="event-startDate"
+                  className="block text-sm font-medium mb-1 text-white/90"
+                >
+                  Start Date
+                </label>
+                <div className="relative">
+                  <input
+                    id="event-startDate"
+                    type="date"
+                    value={formData.startDate}
+                    onChange={handleChange}
+                    className="date-input border rounded-lg w-full px-3 py-2 text-white bg-transparent focus:outline-none focus:ring-2 focus:ring-white/50 cursor-pointer"
+                  />
+                </div>
+              </div>
+
+              {/* End Date */}
+              <div>
+                <label
+                  htmlFor="event-endDate"
+                  className="block text-sm font-medium mb-1 text-white/90"
+                >
+                  End Date
+                </label>
+                <div className="relative">
+                  <input
+                    id="event-endDate"
+                    type="date"
+                    value={formData.endDate}
+                    onChange={handleChange}
+                    className="date-input border rounded-lg w-full px-3 py-2 text-white bg-transparent focus:outline-none focus:ring-2 focus:ring-white/50 cursor-pointer"
+                  />
+                </div>
+              </div>
+
+              {/* Image Upload */}
+              <div>
+                <label
+                  htmlFor="event-image"
+                  className="block text-sm font-medium mb-1 text-white/90"
+                >
+                  Event Image
+                </label>
                 <label
                   htmlFor="event-image"
                   className="flex items-center justify-between border rounded-lg px-3 py-2 text-white bg-transparent cursor-pointer hover:bg-white/10 transition focus-within:ring-2 focus-within:ring-white/50"
@@ -126,15 +189,26 @@ export default function DashboardPage() {
                   className="hidden"
                 />
               </div>
+
+              {/* Add Button */}
               <button
                 onClick={handleAdd}
-                className="bg-white text-[#17364A] font-semibold px-4 py-2 rounded-lg hover:bg-gray-100 transition shadow cursor-pointer"
+                disabled={isSubmitting}
+                className="flex items-center justify-center gap-2 bg-white text-[#17364A] font-semibold px-4 py-2 rounded-lg hover:bg-gray-100 transition shadow cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Add Event
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="animate-spin h-5 w-5 text-[#17364A]" />
+                    Creating...
+                  </>
+                ) : (
+                  "Add Event"
+                )}
               </button>
             </div>
           </div>
 
+          {/* Recent Event */}
           <div className="bg-white p-6 shadow-lg rounded-2xl">
             <h2 className="text-lg font-semibold mb-4 text-gray-800 flex items-center gap-2">
               <CalendarDays className="h-5 w-5 text-[#17364A]" /> Recent Event
