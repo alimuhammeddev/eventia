@@ -5,8 +5,7 @@ import DashboardLayout from "../components/DashboardLayout";
 import { Calendar, MapPin, Trash2, X } from "lucide-react";
 import { useEvents } from "../dashboard/useEvents";
 import React, { useState } from "react";
-import { toast, Toaster } from "sonner"; // ✅ import toast from sonner
-
+import { toast, Toaster } from "sonner";
 export default function MyEvent() {
   const { events, loading, deleteEvent } = useEvents();
   const [deleting, setDeleting] = useState<string | null>(null);
@@ -19,7 +18,6 @@ export default function MyEvent() {
       setDeleting(null);
       setConfirmId(null);
 
-      // ✅ Show toast using Sonner
       toast.success("Event deleted successfully!");
     } catch (error) {
       console.error(error);
