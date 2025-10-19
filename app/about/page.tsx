@@ -12,21 +12,21 @@ export default function AboutPage() {
           About Eventia
         </h1>
 
-        <p className="text-lg mb-4 leading-relaxed">
+        <p className="lg:text-lg mb-4 leading-relaxed">
           Eventia is a creative event management company that specializes in
           bringing unforgettable experiences to life. From intimate gatherings
           to large scale conferences and celebrations, we design, plan, and
           execute events that inspire, engage, and connect people.
         </p>
 
-        <p className="text-lg mb-4 leading-relaxed">
+        <p className="lg:text-lg mb-4 leading-relaxed">
           At Eventia, we believe that every event tells a story, your story.
           That’s why we approach each project with creativity, precision, and
           passion, ensuring every detail reflects your vision and leaves a
           lasting impression on your guests.
         </p>
 
-        <p className="text-lg mb-4 leading-relaxed">
+        <p className="lg:text-lg mb-4 leading-relaxed">
           Our team is made up of experienced planners, designers, and
           strategists who love what they do. We combine artistry with logistics,
           creativity with structure, and innovation with reliability turning
@@ -53,7 +53,7 @@ export default function AboutPage() {
         <h2 className="lg:text-2xl text-lg font-semibold mt-10 mb-3 text-gray-900">
           Our Values
         </h2>
-        <ul className="list-disc list-inside text-lg space-y-2">
+        <ul className="list-disc list-inside lg:text-lg space-y-2">
           <li>
             <strong>Creativity:</strong> We dream big and turn imagination into
             experience.
@@ -76,7 +76,7 @@ export default function AboutPage() {
           </li>
         </ul>
 
-        <p className="text-lg mt-10 leading-relaxed">
+        <p className="lg:text-lg mt-10 leading-relaxed">
           Whether it’s a corporate event, a wedding, a festival, or a private
           celebration, Eventia is your trusted partner for creating moments that
           matter.
