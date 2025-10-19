@@ -21,10 +21,10 @@ export const Navbar = () => {
             <a href="#" className="text-gray-700 hover:text-[#17364A]">
               Home
             </a>
-            <a href="#" className="text-gray-700 hover:text-[#17364A]">
+            <a href="/about" className="text-gray-700 hover:text-[#17364A]">
               About
             </a>
-            <a href="#" className="text-gray-700 hover:text-[#17364A]">
+            <a href="/faq" className="text-gray-700 hover:text-[#17364A]">
               FAQ
             </a>
           </div>
@@ -87,10 +87,10 @@ export const Navbar = () => {
           <a href="#" className="block text-gray-700 hover:text-[#17364A]">
             Home
           </a>
-          <a href="#" className="block text-gray-700 hover:text-[#17364A]">
+          <a href="/about" className="block text-gray-700 hover:text-[#17364A]">
             About
           </a>
-          <a href="#" className="block text-gray-700 hover:text-[#17364A]">
+          <a href="/faq" className="block text-gray-700 hover:text-[#17364A]">
             FAQ
           </a>
 
