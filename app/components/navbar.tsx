@@ -3,6 +3,7 @@
 import { SignInButton, SignUpButton } from "@clerk/nextjs";
 import { CalendarPlus, LogIn } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 export const Navbar = () => {
@@ -18,15 +19,15 @@ export const Navbar = () => {
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex flex-1 justify-center items-center space-x-6">
-            <a href="/" className="text-gray-700 hover:text-[#17364A]">
+            <Link href="/" className="text-gray-700 hover:text-[#17364A]">
               Home
-            </a>
-            <a href="/about" className="text-gray-700 hover:text-[#17364A]">
+            </Link>
+            <Link href="/about" className="text-gray-700 hover:text-[#17364A]">
               About
-            </a>
-            <a href="/faq" className="text-gray-700 hover:text-[#17364A]">
+            </Link>
+            <Link href="/faq" className="text-gray-700 hover:text-[#17364A]">
               FAQ
-            </a>
+            </Link>
           </div>
 
           <div className="hidden md:flex items-center">
@@ -84,15 +85,15 @@ export const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden px-4 pb-4 space-y-2 mt-5">
-          <a href="/" className="block text-gray-700 hover:text-[#17364A]">
+          <Link href="/" className="block text-gray-700 hover:text-[#17364A]">
             Home
-          </a>
-          <a href="/about" className="block text-gray-700 hover:text-[#17364A]">
+          </Link>
+          <Link href="/about" className="block text-gray-700 hover:text-[#17364A]">
             About
-          </a>
-          <a href="/faq" className="block text-gray-700 hover:text-[#17364A]">
+          </Link>
+          <Link href="/faq" className="block text-gray-700 hover:text-[#17364A]">
             FAQ
-          </a>
+          </Link>
 
           <SignInButton mode="modal" forceRedirectUrl="/dashboard">
             <button className="flex items-center text-gray-700 hover:text-[#17364A] mr-7 cursor-pointer">
